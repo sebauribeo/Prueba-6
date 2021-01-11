@@ -1,32 +1,54 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div>
+    <div >
+      <NavBar/>
     </div>
-    <router-view/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import NavBar from '@/components/NavBar.vue'
+import firebase from 'firebase';
+
+
+
+export default {
+  name: 'App',
+  components: {
+    NavBar
+  },
+    mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('cargandoUsuario',user);
+      } else {
+        this.$store.dispatch('cargandoUsuario',null);
+      }
+    });
+    this.$store.dispatch('traerStock');
+  },
+}
+</script>
+
+<style >
+body {
+    margin: 0;
+    padding: 0;
+    background: url('./assets/Fondo.jpg');
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+@keyframes bg {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+} 
 </style>
