@@ -24,9 +24,6 @@ const routes = [
     path: '/registro',
     name: 'Registro',
     component: () => import(/* webpackChunkName: "Registro" */ '../views/Registro.vue'),
-    meta: {
-      requiresAuth: true
-    }
   },
   {
     path: '/editar/:id',
