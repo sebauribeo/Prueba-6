@@ -1,5 +1,8 @@
 <template>
     <div>
+
+<!-- HEADER -->
+
         <b-container class="my-5">
             <h1>
                 <span>¡</span>
@@ -15,36 +18,37 @@
                 <span>o</span>
                 <span>!</span>
             </h1>
+
+<!-- FORM INICIO SESION -->
             
             <h2 class="text-center text-white">Ingresa a tu sesion.</h2>
             <div>
                 <b-card style="max-width: 20rem;" class="text-center mx-auto mt-4" bg-variant="light" border-variant="secondary">
                     <b-avatar></b-avatar>
-                      <b-form @submit.prevent="login" @reset="onReset" v-if="showFormReg">
-                    <b-form-group id="input-group-2" label="Correo Electrónico:" label-for="input-2">
-                        <b-form-input id="input-2" v-model="form.email" type="email" placeholder="Ingresa tu correo electrónico" required ></b-form-input>
-                    </b-form-group>
-
-                    <b-form-group id="input-group-3" label="Password:" label-for="input-3">
-                        <b-form-input v-model="form.password" :state="validation" id="feedback-user" type="password"></b-form-input>
-                        <b-form-invalid-feedback :state="validation">
-                            Ingresa entre 5 y 10 caracteres.
-                        </b-form-invalid-feedback>
-                        <b-form-valid-feedback :state="validation">
-                            ¡Bien hecho!.
-                        </b-form-valid-feedback>
-                    </b-form-group>
-                    
-                    <b-button type="submit" variant="success">Login</b-button>
-                <p class="text-center m-2">¿No estas registrado?</p>
-                <b-button type="reset" variant="info" class="" @click="$router.push('/registro')">Registrate</b-button>
-                </b-form>
-
+                    <b-form @submit.prevent="login" @reset="onReset" v-if="showFormReg">
+                        <b-form-group id="input-group-2" label="Correo Electrónico:" label-for="input-2">
+                            <b-form-input id="input-2" v-model="form.email" type="email" placeholder="Ingresa tu correo electrónico" required ></b-form-input>
+                        </b-form-group>
+                        <b-form-group id="input-group-3" label="Password:" label-for="input-3">
+                            <b-form-input v-model="form.password" :state="validation" id="feedback-user" type="password"></b-form-input>
+                                <b-form-invalid-feedback :state="validation">
+                                    Ingresa entre 5 y 10 caracteres.
+                                </b-form-invalid-feedback>
+                                <b-form-valid-feedback :state="validation">
+                                    ¡Bien hecho!.
+                                </b-form-valid-feedback>
+                        </b-form-group>
+                        <b-button type="submit" variant="success">Login</b-button>
+                        <p class="text-center m-2">¿No estas registrado?</p>
+                        <b-button type="reset" variant="info" class="" @click="$router.push('/registro')">Registrate</b-button>
+                    </b-form>
                 </b-card>
             </div>
         </b-container>
     </div>
 </template>
+
+// SCRIPTS
 
 <script>
 import firebase from 'firebase';
@@ -84,7 +88,6 @@ export default {
                     title: 'Error de Ingreso',
                     message: 'Error en los datos ingresados',
                     position: 'top-right',
-
                 });
             }
         },
@@ -92,14 +95,11 @@ export default {
             event.preventDefault()
             this.form.email = '';
             this.form.password = '';
-
-        // Trick to reset/clear native browser form validation state
             this.showFormReg = false
             this.$nextTick(() => {
                 this.showFormReg = true
             });
         },
-
     },
     computed: {
         validation() {
@@ -108,6 +108,8 @@ export default {
     }
 }
 </script>
+
+// ESTILOS
 
 <style>
 h1 {
@@ -131,7 +133,5 @@ h1 span {
         filter: blur(0px);
         text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
     }
- 
 }
-
 </style>

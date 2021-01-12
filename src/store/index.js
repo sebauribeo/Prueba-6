@@ -27,9 +27,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
+
+//USUARIO 
+
     user({commit},userData){
       commit('mutandoUser', userData)
     },
+
+// TRAER DATOS
+
     traerStock({commit}){
       firebase.firestore().collection("datos").orderBy("codigo", "asc").onSnapshot(result =>{
         let datosStock = [];
@@ -46,18 +52,29 @@ export default new Vuex.Store({
         commit('mutandoStock',datosStock);
       })
     },
+
+//CARGAR USUARIO
+
     cargandoUsuario({commit},userData){
       commit('mutandoUser',userData);
     },
+
+// AGREGAR JUGUETE
+
     agregandoStock(context,stock){
       console.log(stock)
       return firebase.firestore().collection('datos').add({...stock});
     },
+
+// BORRAR JUGUETE
+
     borrandoStock(context, id){
       console.log(id)
       firebase.firestore().collection("datos").doc(id).delete()
       .then(()=>console.log("Datos borrado")).catch(error => console.error(error));
     },
+
+// EDITAR JUGUETE
 
     editarStock(context, item) {
       console.log(item)
@@ -71,8 +88,6 @@ export default new Vuex.Store({
          .then(() => console.log('Edición completa'))
          .catch(error => console.error(error))
          console.log('Datos actualizados');
-     
-  },
-    
+    },
   },    
 })

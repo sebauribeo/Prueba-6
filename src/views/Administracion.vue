@@ -1,6 +1,8 @@
 <template>
     <div class="container">
 
+<!-- HEADER -->
+
         <h1>
           <span>A</span>
           <span>d</span>
@@ -17,6 +19,8 @@
           <span>ó</span>
           <span>n</span>
         </h1>
+
+<!-- TABLA DE DATOS -->
         
         <button type="button" class="btn btn-success btn-lg btn-block rounded-pill my-3" data-toggle="modal" data-target="#exampleModal">Agregar nuevo stock</button>
 
@@ -40,12 +44,15 @@
                         <td>{{item.nombre}}</td>
                         <td>{{item.stock}}</td>
                         <td>{{item.precio}}</td>
-                        <td><button type="button" class="btn btn-success rounded-pill" v-b-tooltip.bottom.hover title="Preciona para editar" @click.prevent="editor"><b-icon icon="pencil-square" aria-hidden="true" ></b-icon></button></td>
+                        <td><button type="button" class="btn btn-success rounded-pill" v-b-tooltip.bottom.hover title="Preciona para editar" @click.prevent="editor(item.idDoc)"><b-icon icon="pencil-square" aria-hidden="true" ></b-icon></button></td>
                         <td><button type="button" class="btn btn-danger  rounded-pill" @click="eliminando(item.idDoc)" v-b-tooltip.bottom.hover title="Preciona para eliminar"><b-icon icon="trash" aria-hidden="true" variant="light"></b-icon></button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+<!-- ALERTA -->
+
         <div class="container" v-else>
             <div class="alert alert-danger" role="alert">
                 No hay productos para mostrar
@@ -53,6 +60,7 @@
         </div>
 
 <!-- MODAL PARA AGREGAR STOCK -->
+
         <div v-for="(item, index) in enviandoStock" :key="index">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -95,9 +103,10 @@
           </div>
         </div>
       </div>
-        
     </div>
 </template>
+
+// SCRIPTS
 
 <script>
 import {mapGetters} from 'vuex';
@@ -118,9 +127,15 @@ import {mapGetters} from 'vuex';
         ...mapGetters(['enviandoStock'])
     },
     methods: {
+
+//BOTON HACIA EDITAR
+
       editor(idDoc){
         this.$router.push({name: 'Editar', params: {id: idDoc}});
       },
+
+//AGREGAR DATOS
+
       agregarStock(item){
         console.log('agregarStock', item)
         this.$confirm('¿Estás seguro que deseas agregar el juguete seleccionado?', {
@@ -158,6 +173,9 @@ import {mapGetters} from 'vuex';
           }
         })
       },  
+
+// ELIMINAR DATOS
+
       eliminando(id){
         console.log('eliminando',id);
         this.$confirm('¿Estás seguro que deseas eliminar los datos?', {
@@ -175,12 +193,10 @@ import {mapGetters} from 'vuex';
         })
       },
     },
-
-    
-
-    
 }
 </script>
+
+// ESTILOS
 
 <style>
 h1 {
@@ -204,7 +220,5 @@ h1 span {
         filter: blur(0px);
         text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
     }
- 
 }
-
 </style>

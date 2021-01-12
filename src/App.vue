@@ -6,11 +6,11 @@
   </div>
 </template>
 
+// SCRIPTS
+
 <script>
 import NavBar from '@/components/NavBar.vue'
 import firebase from 'firebase';
-
-
 
 export default {
   name: 'App',
@@ -21,7 +21,7 @@ export default {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.$store.dispatch('cargandoUsuario',user);
-      } else {
+      }else {
         this.$store.dispatch('cargandoUsuario',null);
       }
     });
@@ -29,6 +29,8 @@ export default {
   },
 }
 </script>
+
+// ESTILOS
 
 <style >
 body {

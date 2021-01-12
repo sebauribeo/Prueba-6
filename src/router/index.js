@@ -29,7 +29,7 @@ const routes = [
     }
   },
   {
-    path: '/editar:id',
+    path: '/editar/:id',
     name: 'Editar',
     props: true,
     component: () => import(/* webpackChunkName: "Editar" */ '../views/Editar.vue')
