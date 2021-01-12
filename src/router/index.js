@@ -15,7 +15,6 @@ const routes = [
   {
     path: '/administracion',
     name: 'Administracion',
-    alias: ['/editar'],
     component: () => import(/* webpackChunkName: "Administracion" */ '../views/Administracion.vue'),
     meta: {
       requiresAuth: true 
@@ -30,8 +29,9 @@ const routes = [
     }
   },
   {
-    path: '/editar',
+    path: '/editar:id',
     name: 'Editar',
+    props: true,
     component: () => import(/* webpackChunkName: "Editar" */ '../views/Editar.vue')
   },
   {

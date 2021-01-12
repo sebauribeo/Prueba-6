@@ -1,8 +1,8 @@
 <template>
     <div class="container my-5">
         <h2 class="text-center text-white">Editando a: {{nombre}}</h2>
-        <div class="card" v-if="enviandoStock" >
-            <form class="text-white bg-dark container" @submit.prevent="editarStock ">
+        <div class="card">
+            <form class="text-white bg-dark container" @submit.prevent="editarStock">
                 <div class="mb-3">
                     <label for="codigo" class="form-label">Codigo</label>
                     <input type="text" class="form-control" id="codigo" v-model="codigo">
@@ -62,7 +62,7 @@ export default {
                     imagen: this.imagen,
                     stock: this.stock,
                     precio: this.precio,
-                    idDoc: this.idDoc,
+                    idDoc: this.id,
                 };
                 this.$store.dispatch('editarStock',datos);
                 setTimeout(()=>{
@@ -82,12 +82,11 @@ export default {
             this.imagen = datos.imagen;
             this.stock = datos.stock;
             this.precio = datos.precio;
-            this.idDoc = datos.idDoc
         }else {
             console.log("No hay datos");
-            setTimeout(()=>{
-                this.$router.push({name: 'Home'});
-            },1000);
+            // setTimeout(()=>{
+            //     this.$router.push({name: 'Home'});
+            // },1000);
         }
     }
 
