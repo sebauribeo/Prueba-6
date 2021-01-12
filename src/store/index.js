@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 import firebase from 'firebase';
 
 
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -28,6 +27,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    user({commit},userData){
+      commit('mutandoUser', userData)
+    },
     traerStock({commit}){
       firebase.firestore().collection("datos").orderBy("codigo", "asc").onSnapshot(result =>{
         let datosStock = [];
@@ -35,6 +37,7 @@ export default new Vuex.Store({
           datosStock.push({
             idDoc: element.id,
             codigo: element.data().codigo,
+            imagen: element.data().imagen,
             nombre: element.data().nombre,
             stock: element.data().stock,
             precio: element.data().precio,
@@ -47,16 +50,28 @@ export default new Vuex.Store({
       commit('mutandoUser',userData);
     },
     agregandoStock(context,stock){
+      console.log(stock)
       return firebase.firestore().collection('datos').add({...stock});
     },
     borrandoStock(context, id){
+      console.log(id)
       firebase.firestore().collection("datos").doc(id).delete()
       .then(()=>console.log("Datos borrado")).catch(error => console.error(error));
     },
 
     editarStock(context, item) {
       console.log(item)
-      firebase.firestore().collection('datos').doc(item).update({...item})
+      firebase.firestore().collection('datos').doc(item.idDoc).update({
+          codigo: item.codigo,
+          nombre: item.nombre,
+          imagen: item.imagen,
+          stock: item.stock,
+          precio: item.precio,
+         })
+         .then(() => console.log('Edición completa'))
+         .catch(error => console.error(error))
+         console.log('Datos actualizados');
+     
   },
     
   },    
