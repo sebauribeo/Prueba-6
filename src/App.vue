@@ -2,13 +2,14 @@
   <div>
     <div >
       <NavBar/>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 // SCRIPTS
 
-<script>
+<script scoped>
 import NavBar from '@/components/NavBar.vue'
 import firebase from 'firebase';
 
@@ -34,12 +35,9 @@ export default {
 
 <style >
 body {
-    margin: 0;
-    padding: 0;
-    background: url('./assets/Fondo.jpg');
-    width: 100%;
-    height: 100%;
-    font-family: -apple-system;
+  background: url('./assets/Fondo.jpg') no-repeat;
+  background-size: cover;
+  font-family: 'Sriracha', cursive !important;
 }
 
 @keyframes bg {
@@ -53,4 +51,5 @@ body {
         background-position: 0% 50%;
     }
 } 
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
 </style>

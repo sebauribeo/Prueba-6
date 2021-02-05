@@ -200,25 +200,24 @@ import {mapGetters} from 'vuex';
 
 <style>
 h1 {
-  font-family: monospace;
-    margin-top: 20px;
-    color:  #00b7ff;
-    font-size: 70px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  margin-top: 20px;
+  color:  #00b7ff;
+  font-size: 70px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 h1 span {
-    display: table-cell;
-    margin: 0;
-    padding: 0;
-    animation: animate 2s linear infinite;
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  animation: animate 2s linear infinite;
 }
 @keyframes animate{
-    0%, 100% {
-        color: #fff;
-        filter: blur(0px);
-        text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
-    }
+  0%, 100% {
+    color: #fff;
+    filter: blur(0px);
+    text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
+  }
 }
 </style>

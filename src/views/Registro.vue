@@ -19,7 +19,7 @@
 
         <h2 class="text-center text-white">Registrate como Usuario</h2>
         <div>
-            <b-card style="max-width: 22rem;" class="text-center mx-auto mt-4">
+            <b-card style="max-width: 22rem;" class=" card text-center mx-auto mt-4">
                 <b-form @submit.prevent="registrouser" @reset="onReset(form.uid)" v-if="showFormReg">
                     <b-form-group id="input-group-2" label="Correo Electrónico:" label-for="input-2" description="Tú información no será compartida.">
                         <b-form-input id="input-2" v-model="form.email" type="email" placeholder="Ingresa tu correo electrónico" required ></b-form-input>
@@ -43,7 +43,7 @@
 
 // SCRIPTS
 
-<script>
+<script scoped>
 import firebase from 'firebase';
 
 export default {
@@ -122,25 +122,29 @@ export default {
 
 <style>
 h1 {
-  font-family: monospace;
-    margin-top: 20px;
-    color:  #00b7ff;
-    font-size: 70px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  margin-top: 20px;
+  color:  #00b7ff;
+  font-size: 70px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 h1 span {
-    display: table-cell;
-    margin: 0;
-    padding: 0;
-    animation: animate 2s linear infinite;
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  animation: animate 2s linear infinite;
 }
 @keyframes animate{
-    0%, 100% {
-        color: #fff;
-        filter: blur(0px);
-        text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
-    }
+  0%, 100% {
+    color: #fff;
+     filter: blur(0px);
+    text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
+}
+}
+.card{
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.767);
+  color: white;
 }
 </style>

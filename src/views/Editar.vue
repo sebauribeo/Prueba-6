@@ -14,32 +14,32 @@
 
 <!-- CARD EDITOR DE JUGUETES -->
 
-        <h2 class="text-center text-white">Editando a: {{nombre}}</h2>
-        <div class="card">
-            <form class="text-white bg-dark container" @submit.prevent="editarStock">
-                <div class="mb-3">
+        <h2 class="text-center text-white mt-4">Editando a: <strong>{{nombre}}</strong></h2>
+        <div class="card mt-3">
+            <form class="text-white container" @submit.prevent="editarStock">
+                <div class="mb-2">
                     <label for="codigo" class="form-label">Codigo</label>
                     <input type="text" class="form-control" id="codigo" v-model="codigo">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="nombre" v-model="nombre">
                 </div>
-                <div class="mb-3">
-                    <label for="imagen" class="form-label">Imagen</label>
+                <div class="mb-2">
+                    <label for="imagen" class="form-label">Imagen URL</label>
                     <input type="text" class="form-control" id="imagen" v-model="imagen">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="stock" class="form-label">Stock </label>
                     <input type="number" class="form-control" id="stock" v-model="stock">
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="precio" class="form-label">Precio</label>
                     <input type="number" class="form-control" id="precio" v-model="precio">
                 </div>
-                <div class="text-center my-5">
-                    <button type="submit" class="btn btn-success m-3">Guardar</button>
-                    <button type="button" class="btn btn-danger m-3" @click="$router.go(-1)">Regresar</button>
+                <div class="text-center my-2">
+                    <button type="submit" class="btn btn-success m-3 rounded-pill btn-outline-light">Guardar</button>
+                    <button type="button" class="btn btn-danger m-3 rounded-pill btn-outline-light" @click="$router.go(-1)">Regresar</button>
                 </div>
             </form>
         </div>
@@ -123,6 +123,31 @@ export default {
 
 // ESTILOS
 
-<style>
-
+<style scoped>
+h1 {
+  margin-top: 20px;
+  color:  #00b7ff;
+  font-size: 70px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+h1 span {
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  animation: animate 2s linear infinite;
+}
+@keyframes animate{
+  0%, 100% {
+    color: #fff;
+    filter: blur(0px);
+    text-shadow: 0 0 10px #00b7ff, 0 0 20px #00b7ff, 0 0 30px #00b7ff, 0 0 40px #00b7ff,0 0 50px #00b7ff;
+  }
+}
+.card{
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.767);
+  color: white;
+}
 </style>
