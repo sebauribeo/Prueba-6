@@ -1,5 +1,7 @@
 # prueba_6
 
+Live demo: https://jugueteria-401b0.web.app/
+
 ## Project setup
 ```
 npm install
